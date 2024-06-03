@@ -1,0 +1,89 @@
+﻿<DeploymentSnapshot xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ddl2="http://schemas.microsoft.com/analysisservices/2003/engine/2" xmlns:ddl2_2="http://schemas.microsoft.com/analysisservices/2003/engine/2/2" xmlns:ddl100_100="http://schemas.microsoft.com/analysisservices/2008/engine/100/100" xmlns:ddl200="http://schemas.microsoft.com/analysisservices/2010/engine/200" xmlns:ddl200_200="http://schemas.microsoft.com/analysisservices/2010/engine/200/200" xmlns:ddl300="http://schemas.microsoft.com/analysisservices/2011/engine/300" xmlns:ddl300_300="http://schemas.microsoft.com/analysisservices/2011/engine/300/300" xmlns:ddl400="http://schemas.microsoft.com/analysisservices/2012/engine/400" xmlns:ddl400_400="http://schemas.microsoft.com/analysisservices/2012/engine/400/400" xmlns:ddl500="http://schemas.microsoft.com/analysisservices/2013/engine/500" xmlns:ddl500_500="http://schemas.microsoft.com/analysisservices/2013/engine/500/500" xmlns:dwd="http://schemas.microsoft.com/DataWarehouse/Designer/1.0">
+  <Target>
+    <Database>ResortHotelDW</Database>
+    <Server>KHA\BRVKHA</Server>
+    <ConnectionString>Data Source=KHA\BRVKHA;Timeout=0</ConnectionString>
+  </Target>
+  <Options>
+    <TransactionalDeployment>false</TransactionalDeployment>
+    <PartitionDeployment>DeployPartitions</PartitionDeployment>
+    <RoleDeployment>DeployRolesRetainMembers</RoleDeployment>
+    <ProcessingOption>DoNotProcess</ProcessingOption>
+    <OutputScript></OutputScript>
+    <ImpactAnalysisFile></ImpactAnalysisFile>
+    <ConfigurationSettingsDeployment>Deploy</ConfigurationSettingsDeployment>
+    <OptimizationSettingsDeployment>Deploy</OptimizationSettingsDeployment>
+    <WriteBackTableCreation>UseExisting</WriteBackTableCreation>
+  </Options>
+  <Snapshot>
+    <ObjectSnapshots>
+      <ObjectSnapshot>
+        <Type>Microsoft.AnalysisServices.RelationalDataSource</Type>
+        <TimeStamp>zIZ0xBHYddgesu+QJqlAuuHlUAg=5/23/2024 8:10:43 PM5/23/2024 7:06:16 PM</TimeStamp>
+        <ID>
+          <String>Resort Hotel DW</String>
+        </ID>
+      </ObjectSnapshot>
+      <ObjectSnapshot>
+        <Type>Microsoft.AnalysisServices.RelationalDataSource</Type>
+        <TimeStamp>QtbpxwfSGRAkkf6CoykFf2qf44M=5/23/2024 8:12:26 PM5/23/2024 8:12:26 PM</TimeStamp>
+        <ID>
+          <String>Resort Hotel DW 1</String>
+        </ID>
+      </ObjectSnapshot>
+      <ObjectSnapshot>
+        <Type>Microsoft.AnalysisServices.DataSourceView</Type>
+        <TimeStamp>dD0KiqjcBnF8noJjK/yhhtm9xfk=5/23/2024 8:12:46 PM5/23/2024 8:12:46 PM</TimeStamp>
+        <ID>
+          <String>Resort Hotel DW</String>
+        </ID>
+      </ObjectSnapshot>
+      <ObjectSnapshot>
+        <Type>Microsoft.AnalysisServices.Dimension</Type>
+        <TimeStamp>J9d1zi5+H+H4TiwuVg+eI/I6Wuo=5/23/2024 8:13:55 PM5/23/2024 7:06:16 PM</TimeStamp>
+        <ID>
+          <String>Dim Hotel</String>
+        </ID>
+      </ObjectSnapshot>
+      <ObjectSnapshot>
+        <Type>Microsoft.AnalysisServices.Dimension</Type>
+        <TimeStamp>jt6IsiWdqun8rXDLG0xGiGAG+tA=5/23/2024 8:14:49 PM5/23/2024 7:06:16 PM</TimeStamp>
+        <ID>
+          <String>Dim Date</String>
+        </ID>
+      </ObjectSnapshot>
+      <ObjectSnapshot>
+        <Type>Microsoft.AnalysisServices.Dimension</Type>
+        <TimeStamp>XN85rVibBr4VS1DaeBYZpukSoYc=5/23/2024 8:17:25 PM5/23/2024 7:06:16 PM</TimeStamp>
+        <ID>
+          <String>Dim Customers</String>
+        </ID>
+      </ObjectSnapshot>
+      <ObjectSnapshot>
+        <Type>Microsoft.AnalysisServices.Dimension</Type>
+        <TimeStamp>4P2HCWevJVEUHNNVF1JJx1frPZ8=5/23/2024 8:36:24 PM5/23/2024 8:34:04 PM</TimeStamp>
+        <ID>
+          <String>Fact Booking</String>
+        </ID>
+      </ObjectSnapshot>
+      <ObjectSnapshot>
+        <Type>Microsoft.AnalysisServices.Cube</Type>
+        <TimeStamp>kjaqo/CXLu9soXAt0BLF9X47uEI=5/23/2024 8:35:28 PM5/23/2024 8:34:04 PMwawwzySDLegUpsKYdQObXBqhXdA=5/23/2024 8:34:04 PM5/23/2024 8:34:04 PM</TimeStamp>
+        <ID>
+          <String>Resort Hotel DW</String>
+        </ID>
+      </ObjectSnapshot>
+    </ObjectSnapshots>
+    <DatabaseSnapshot>
+      <Type>Microsoft.AnalysisServices.Database</Type>
+      <TimeStamp>/s28FYjgOsTxKVSVUy2umDCGfUg=5/22/2024 3:50:30 AM5/23/2024 7:06:16 PM</TimeStamp>
+      <ID>
+        <String>ResortHotelDW</String>
+      </ID>
+    </DatabaseSnapshot>
+    <Granularity>Coarse</Granularity>
+  </Snapshot>
+  <AssemblyLocations />
+  <ProcessingComplete>true</ProcessingComplete>
+  <LastDeployed>2024-05-23T13:36:39.486667Z</LastDeployed>
+</DeploymentSnapshot>

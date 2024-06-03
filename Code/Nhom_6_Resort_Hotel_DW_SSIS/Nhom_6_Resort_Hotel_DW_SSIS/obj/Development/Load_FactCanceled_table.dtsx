@@ -1,0 +1,3072 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="5/23/2024 1:52:31 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="ADMIN"
+  DTS:CreatorName="ADMIN\Admin"
+  DTS:DTSID="{B605FCBD-726A-4C71-9B51-C165EBD933CF}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.5467.0"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="Package1"
+  DTS:PackageType="5"
+  DTS:VersionBuild="4"
+  DTS:VersionGUID="{B92CED93-E028-4893-9D7A-C5C858ED5B2C}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Excel Connection Manager]"
+      DTS:CreationName="EXCEL"
+      DTS:DTSID="{2220E576-BB6A-4FB4-922B-86CD7D3A6349}"
+      DTS:ObjectName="Excel Connection Manager">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="0"
+          DTS:ConnectRetryInterval="0"
+          DTS:ConnectionString="Provider=Microsoft.ACE.OLEDB.12.0;Data Source=D:\Resort_Hotel_DataWareHouse\dataset.xlsx;Extended Properties=&quot;EXCEL 12.0 XML;HDR=YES&quot;;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Excel Connection Manager 1]"
+      DTS:CreationName="EXCEL"
+      DTS:DTSID="{AE541CB3-281A-44EB-BA34-5BF9122BCAE8}"
+      DTS:ObjectName="Excel Connection Manager 1">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="0"
+          DTS:ConnectRetryInterval="0"
+          DTS:ConnectionString="Provider=Microsoft.ACE.OLEDB.12.0;Data Source=D:\21110935_NguyenNhatTruong_nhom_6\dataset.xlsx;Extended Properties=&quot;EXCEL 12.0 XML;HDR=YES&quot;;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Load data from StageCanceled to FactCanceled"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{AA48945B-4D87-4097-B5A5-54B943C93A2C}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Load data from StageCanceled to FactCanceled"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Load data from StageCanceled to FactCanceled\FactCanceled_table"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="FactCanceled_table"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[FactCanceled]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Load data from StageCanceled to FactCanceled\FactCanceled_table.Connections[OleDbConnection]"
+                  connectionManagerID="{13080BF0-F8A3-452B-A09E-6E5FB2252906}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[Admin.Resort_Hotel_DW]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Load data from StageCanceled to FactCanceled\FactCanceled_table.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Load data from StageCanceled to FactCanceled\FactCanceled_table.Inputs[OLE DB Destination Input].Columns[HotelKey]"
+                      cachedDataType="i4"
+                      cachedName="HotelKey"
+                      externalMetadataColumnId="Package\Load data from StageCanceled to FactCanceled\FactCanceled_table.Inputs[OLE DB Destination Input].ExternalColumns[HotelKey]"
+                      lineageId="Package\Load data from StageCanceled to FactCanceled\StageCanceled_table.Outputs[OLE DB Source Output].Columns[HotelKey]" />
+                    <inputColumn
+                      refId="Package\Load data from StageCanceled to FactCanceled\FactCanceled_table.Inputs[OLE DB Destination Input].Columns[DateKey]"
+                      cachedDataType="i4"
+                      cachedName="DateKey"
+                      externalMetadataColumnId="Package\Load data from StageCanceled to FactCanceled\FactCanceled_table.Inputs[OLE DB Destination Input].ExternalColumns[DateKey]"
+                      lineageId="Package\Load data from StageCanceled to FactCanceled\StageCanceled_table.Outputs[OLE DB Source Output].Columns[DateKey]" />
+                    <inputColumn
+                      refId="Package\Load data from StageCanceled to FactCanceled\FactCanceled_table.Inputs[OLE DB Destination Input].Columns[CustomerKey]"
+                      cachedDataType="i4"
+                      cachedName="CustomerKey"
+                      externalMetadataColumnId="Package\Load data from StageCanceled to FactCanceled\FactCanceled_table.Inputs[OLE DB Destination Input].ExternalColumns[CustomerKey]"
+                      lineageId="Package\Load data from StageCanceled to FactCanceled\StageCanceled_table.Outputs[OLE DB Source Output].Columns[CustomerKey]" />
+                    <inputColumn
+                      refId="Package\Load data from StageCanceled to FactCanceled\FactCanceled_table.Inputs[OLE DB Destination Input].Columns[ADR]"
+                      cachedDataType="r8"
+                      cachedName="ADR"
+                      externalMetadataColumnId="Package\Load data from StageCanceled to FactCanceled\FactCanceled_table.Inputs[OLE DB Destination Input].ExternalColumns[ADR]"
+                      lineageId="Package\Load data from StageCanceled to FactCanceled\StageCanceled_table.Outputs[OLE DB Source Output].Columns[ADR]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Load data from StageCanceled to FactCanceled\FactCanceled_table.Inputs[OLE DB Destination Input].ExternalColumns[HotelKey]"
+                      dataType="i4"
+                      name="HotelKey" />
+                    <externalMetadataColumn
+                      refId="Package\Load data from StageCanceled to FactCanceled\FactCanceled_table.Inputs[OLE DB Destination Input].ExternalColumns[DateKey]"
+                      dataType="i4"
+                      name="DateKey" />
+                    <externalMetadataColumn
+                      refId="Package\Load data from StageCanceled to FactCanceled\FactCanceled_table.Inputs[OLE DB Destination Input].ExternalColumns[CustomerKey]"
+                      dataType="i4"
+                      name="CustomerKey" />
+                    <externalMetadataColumn
+                      refId="Package\Load data from StageCanceled to FactCanceled\FactCanceled_table.Inputs[OLE DB Destination Input].ExternalColumns[ADR]"
+                      dataType="r8"
+                      name="ADR" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load data from StageCanceled to FactCanceled\FactCanceled_table.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Load data from StageCanceled to FactCanceled\FactCanceled_table.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load data from StageCanceled to FactCanceled\FactCanceled_table.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load data from StageCanceled to FactCanceled\FactCanceled_table.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load data from StageCanceled to FactCanceled\FactCanceled_table.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load data from StageCanceled to FactCanceled\FactCanceled_table.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Load data from StageCanceled to FactCanceled\StageCanceled_table"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="StageCanceled_table"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[StageCanceled]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Load data from StageCanceled to FactCanceled\StageCanceled_table.Connections[OleDbConnection]"
+                  connectionManagerID="{4AEC852E-A28C-4B75-A9DB-EF006BEEBD48}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[Admin.Resort_Hotel_Stage]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Load data from StageCanceled to FactCanceled\StageCanceled_table.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load data from StageCanceled to FactCanceled\StageCanceled_table.Outputs[OLE DB Source Output].Columns[HotelKey]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load data from StageCanceled to FactCanceled\StageCanceled_table.Outputs[OLE DB Source Output].ExternalColumns[HotelKey]"
+                      lineageId="Package\Load data from StageCanceled to FactCanceled\StageCanceled_table.Outputs[OLE DB Source Output].Columns[HotelKey]"
+                      name="HotelKey"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load data from StageCanceled to FactCanceled\StageCanceled_table.Outputs[OLE DB Source Output].Columns[DateKey]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load data from StageCanceled to FactCanceled\StageCanceled_table.Outputs[OLE DB Source Output].ExternalColumns[DateKey]"
+                      lineageId="Package\Load data from StageCanceled to FactCanceled\StageCanceled_table.Outputs[OLE DB Source Output].Columns[DateKey]"
+                      name="DateKey"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load data from StageCanceled to FactCanceled\StageCanceled_table.Outputs[OLE DB Source Output].Columns[CustomerKey]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load data from StageCanceled to FactCanceled\StageCanceled_table.Outputs[OLE DB Source Output].ExternalColumns[CustomerKey]"
+                      lineageId="Package\Load data from StageCanceled to FactCanceled\StageCanceled_table.Outputs[OLE DB Source Output].Columns[CustomerKey]"
+                      name="CustomerKey"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load data from StageCanceled to FactCanceled\StageCanceled_table.Outputs[OLE DB Source Output].Columns[ADR]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load data from StageCanceled to FactCanceled\StageCanceled_table.Outputs[OLE DB Source Output].ExternalColumns[ADR]"
+                      lineageId="Package\Load data from StageCanceled to FactCanceled\StageCanceled_table.Outputs[OLE DB Source Output].Columns[ADR]"
+                      name="ADR"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Load data from StageCanceled to FactCanceled\StageCanceled_table.Outputs[OLE DB Source Output].ExternalColumns[HotelKey]"
+                      dataType="i4"
+                      name="HotelKey" />
+                    <externalMetadataColumn
+                      refId="Package\Load data from StageCanceled to FactCanceled\StageCanceled_table.Outputs[OLE DB Source Output].ExternalColumns[DateKey]"
+                      dataType="i4"
+                      name="DateKey" />
+                    <externalMetadataColumn
+                      refId="Package\Load data from StageCanceled to FactCanceled\StageCanceled_table.Outputs[OLE DB Source Output].ExternalColumns[CustomerKey]"
+                      dataType="i4"
+                      name="CustomerKey" />
+                    <externalMetadataColumn
+                      refId="Package\Load data from StageCanceled to FactCanceled\StageCanceled_table.Outputs[OLE DB Source Output].ExternalColumns[ADR]"
+                      dataType="r8"
+                      name="ADR" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Load data from StageCanceled to FactCanceled\StageCanceled_table.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load data from StageCanceled to FactCanceled\StageCanceled_table.Outputs[OLE DB Source Error Output].Columns[HotelKey]"
+                      dataType="i4"
+                      lineageId="Package\Load data from StageCanceled to FactCanceled\StageCanceled_table.Outputs[OLE DB Source Error Output].Columns[HotelKey]"
+                      name="HotelKey" />
+                    <outputColumn
+                      refId="Package\Load data from StageCanceled to FactCanceled\StageCanceled_table.Outputs[OLE DB Source Error Output].Columns[DateKey]"
+                      dataType="i4"
+                      lineageId="Package\Load data from StageCanceled to FactCanceled\StageCanceled_table.Outputs[OLE DB Source Error Output].Columns[DateKey]"
+                      name="DateKey" />
+                    <outputColumn
+                      refId="Package\Load data from StageCanceled to FactCanceled\StageCanceled_table.Outputs[OLE DB Source Error Output].Columns[CustomerKey]"
+                      dataType="i4"
+                      lineageId="Package\Load data from StageCanceled to FactCanceled\StageCanceled_table.Outputs[OLE DB Source Error Output].Columns[CustomerKey]"
+                      name="CustomerKey" />
+                    <outputColumn
+                      refId="Package\Load data from StageCanceled to FactCanceled\StageCanceled_table.Outputs[OLE DB Source Error Output].Columns[ADR]"
+                      dataType="r8"
+                      lineageId="Package\Load data from StageCanceled to FactCanceled\StageCanceled_table.Outputs[OLE DB Source Error Output].Columns[ADR]"
+                      name="ADR" />
+                    <outputColumn
+                      refId="Package\Load data from StageCanceled to FactCanceled\StageCanceled_table.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load data from StageCanceled to FactCanceled\StageCanceled_table.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load data from StageCanceled to FactCanceled\StageCanceled_table.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load data from StageCanceled to FactCanceled\StageCanceled_table.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Load data from StageCanceled to FactCanceled.Paths[OLE DB Source Output]"
+              endId="Package\Load data from StageCanceled to FactCanceled\FactCanceled_table.Inputs[OLE DB Destination Input]"
+              name="OLE DB Source Output"
+              startId="Package\Load data from StageCanceled to FactCanceled\StageCanceled_table.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Load data to StageCanceled"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{B159FA1D-6FC5-4FF7-8EE6-79F2ED9DC60D}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Load data to StageCanceled"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Load data to StageCanceled\Conditional Split"
+              componentClassID="Microsoft.ConditionalSplit"
+              contactInfo="Conditional Split;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Routes data rows to different outputs depending on the content of the data. Use conditions (SSIS expressions) to specify which rows are routed. For example, separate records that need to be cleaned from those that are ready to be loaded or route only a subset of records."
+              name="Conditional Split"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Load data to StageCanceled\Conditional Split.Inputs[Conditional Split Input]"
+                  description="Input to the Conditional Split Transformation"
+                  name="Conditional Split Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Load data to StageCanceled\Conditional Split.Inputs[Conditional Split Input].Columns[is_canceled]"
+                      cachedDataType="r8"
+                      cachedName="is_canceled"
+                      lineageId="Package\Load data to StageCanceled\Resort_Hotel_dataset.Outputs[Excel Source Output].Columns[is_canceled]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load data to StageCanceled\Conditional Split.Outputs[Case 1]"
+                  description="Output 1 of the Conditional Split Transformation"
+                  errorOrTruncationOperation="Computation"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="Case 1"
+                  synchronousInputId="Package\Load data to StageCanceled\Conditional Split.Inputs[Conditional Split Input]"
+                  truncationRowDisposition="FailComponent">
+                  <properties>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the expression. This expression version uses lineage identifiers instead of column names."
+                      name="Expression">#{Package\Load data to StageCanceled\Resort_Hotel_dataset.Outputs[Excel Source Output].Columns[is_canceled]} == 1</property>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the friendly version of the expression. This expression version uses column names."
+                      expressionType="Notify"
+                      name="FriendlyExpression">is_canceled == 1</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the position of the condition in the list of conditions that the transformation evaluates. The evaluation order is from the lowest to the highest value."
+                      name="EvaluationOrder">0</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Load data to StageCanceled\Conditional Split.Outputs[Conditional Split Default Output]"
+                  description="Default Output of the Conditional Split Transformation"
+                  exclusionGroup="1"
+                  name="Conditional Split Default Output"
+                  synchronousInputId="Package\Load data to StageCanceled\Conditional Split.Inputs[Conditional Split Input]">
+                  <properties>
+                    <property
+                      dataType="System.Boolean"
+                      name="IsDefaultOut">true</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Load data to StageCanceled\Conditional Split.Outputs[Conditional Split Error Output]"
+                  description="Error Output of the Conditional Split Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Conditional Split Error Output"
+                  synchronousInputId="Package\Load data to StageCanceled\Conditional Split.Inputs[Conditional Split Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load data to StageCanceled\Conditional Split.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load data to StageCanceled\Conditional Split.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load data to StageCanceled\Conditional Split.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load data to StageCanceled\Conditional Split.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Load data to StageCanceled\Customer"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="Customer"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [dbo].[StageCustomers]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [dbo].[StageCustomers]) [refTable]
+where [refTable].[CustomerKey] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="CustomerKey" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Country" dataType="DT_STR" length="20" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="CustomerType" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="is_repeated_guest" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="previous_cancellations" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="previous_bookings_not_canceled" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\Load data to StageCanceled\Script Component.Outputs[Output 0].Columns[NumberKey]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Load data to StageCanceled\Customer.Connections[OleDbConnection]"
+                  connectionManagerID="{4AEC852E-A28C-4B75-A9DB-EF006BEEBD48}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[Admin.Resort_Hotel_Stage]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Load data to StageCanceled\Customer.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Load data to StageCanceled\Customer.Inputs[Lookup Input].Columns[NumberKey]"
+                      cachedDataType="i4"
+                      cachedName="NumberKey"
+                      lineageId="Package\Load data to StageCanceled\Script Component.Outputs[Output 0].Columns[NumberKey]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">CustomerKey</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load data to StageCanceled\Customer.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\Load data to StageCanceled\Customer.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load data to StageCanceled\Customer.Outputs[Lookup Match Output].Columns[CustomerKey]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\Load data to StageCanceled\Customer.Outputs[Lookup Match Output].Columns[CustomerKey]"
+                      name="CustomerKey"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">CustomerKey</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Load data to StageCanceled\Customer.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\Load data to StageCanceled\Customer.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Load data to StageCanceled\Customer.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\Load data to StageCanceled\Customer.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load data to StageCanceled\Customer.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load data to StageCanceled\Customer.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load data to StageCanceled\Customer.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load data to StageCanceled\Customer.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Load data to StageCanceled\DateKey"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="DateKey"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [dbo].[StageDate]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [dbo].[StageDate]) [refTable]
+where [refTable].[Datekey] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="Datekey" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="arrival_date_year" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="arrival_date_month" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="arrival_date_week_number" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="arrival_date_day_of_month" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1252"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\Load data to StageCanceled\Script Component.Outputs[Output 0].Columns[DateKey]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Load data to StageCanceled\DateKey.Connections[OleDbConnection]"
+                  connectionManagerID="{4AEC852E-A28C-4B75-A9DB-EF006BEEBD48}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[Admin.Resort_Hotel_Stage]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Load data to StageCanceled\DateKey.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Load data to StageCanceled\DateKey.Inputs[Lookup Input].Columns[DateKey]"
+                      cachedDataType="i4"
+                      cachedName="DateKey"
+                      lineageId="Package\Load data to StageCanceled\Script Component.Outputs[Output 0].Columns[DateKey]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">Datekey</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load data to StageCanceled\DateKey.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\Load data to StageCanceled\DateKey.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load data to StageCanceled\DateKey.Outputs[Lookup Match Output].Columns[Datekey]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\Load data to StageCanceled\DateKey.Outputs[Lookup Match Output].Columns[Datekey]"
+                      name="Datekey"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">Datekey</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Load data to StageCanceled\DateKey.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\Load data to StageCanceled\DateKey.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Load data to StageCanceled\DateKey.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\Load data to StageCanceled\DateKey.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load data to StageCanceled\DateKey.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load data to StageCanceled\DateKey.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load data to StageCanceled\DateKey.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load data to StageCanceled\DateKey.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Load data to StageCanceled\Hotel"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="Hotel"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [dbo].[StageHotel]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [dbo].[StageHotel]) [refTable]
+where [refTable].[HotelKey] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="HotelKey" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="HotelName" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1252"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\Load data to StageCanceled\Script Component.Outputs[Output 0].Columns[HotelKey]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Load data to StageCanceled\Hotel.Connections[OleDbConnection]"
+                  connectionManagerID="{4AEC852E-A28C-4B75-A9DB-EF006BEEBD48}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[Admin.Resort_Hotel_Stage]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Load data to StageCanceled\Hotel.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Load data to StageCanceled\Hotel.Inputs[Lookup Input].Columns[HotelKey]"
+                      cachedDataType="i4"
+                      cachedName="HotelKey"
+                      lineageId="Package\Load data to StageCanceled\Script Component.Outputs[Output 0].Columns[HotelKey]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">HotelKey</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load data to StageCanceled\Hotel.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\Load data to StageCanceled\Hotel.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load data to StageCanceled\Hotel.Outputs[Lookup Match Output].Columns[HotelKey]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\Load data to StageCanceled\Hotel.Outputs[Lookup Match Output].Columns[HotelKey]"
+                      name="HotelKey"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">HotelKey</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Load data to StageCanceled\Hotel.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\Load data to StageCanceled\Hotel.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Load data to StageCanceled\Hotel.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\Load data to StageCanceled\Hotel.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load data to StageCanceled\Hotel.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load data to StageCanceled\Hotel.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load data to StageCanceled\Hotel.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load data to StageCanceled\Hotel.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Load data to StageCanceled\Resort_Hotel_dataset"
+              componentClassID="Microsoft.ExcelSource"
+              contactInfo="Excel Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Excel Source"
+              name="Resort_Hotel_dataset"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">hotel_booking$</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mapping from parameters in the SQL command to variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Load data to StageCanceled\Resort_Hotel_dataset.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Excel Connection Manager 1]"
+                  connectionManagerRefId="Package.ConnectionManagers[Excel Connection Manager 1]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Load data to StageCanceled\Resort_Hotel_dataset.Outputs[Excel Source Output]"
+                  name="Excel Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load data to StageCanceled\Resort_Hotel_dataset.Outputs[Excel Source Output].Columns[hotel]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load data to StageCanceled\Resort_Hotel_dataset.Outputs[Excel Source Output].ExternalColumns[hotel]"
+                      length="255"
+                      lineageId="Package\Load data to StageCanceled\Resort_Hotel_dataset.Outputs[Excel Source Output].Columns[hotel]"
+                      name="hotel"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load data to StageCanceled\Resort_Hotel_dataset.Outputs[Excel Source Output].Columns[is_canceled]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load data to StageCanceled\Resort_Hotel_dataset.Outputs[Excel Source Output].ExternalColumns[is_canceled]"
+                      lineageId="Package\Load data to StageCanceled\Resort_Hotel_dataset.Outputs[Excel Source Output].Columns[is_canceled]"
+                      name="is_canceled"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load data to StageCanceled\Resort_Hotel_dataset.Outputs[Excel Source Output].Columns[arrival_date_year]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load data to StageCanceled\Resort_Hotel_dataset.Outputs[Excel Source Output].ExternalColumns[arrival_date_year]"
+                      lineageId="Package\Load data to StageCanceled\Resort_Hotel_dataset.Outputs[Excel Source Output].Columns[arrival_date_year]"
+                      name="arrival_date_year"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load data to StageCanceled\Resort_Hotel_dataset.Outputs[Excel Source Output].Columns[arrival_date_month]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load data to StageCanceled\Resort_Hotel_dataset.Outputs[Excel Source Output].ExternalColumns[arrival_date_month]"
+                      lineageId="Package\Load data to StageCanceled\Resort_Hotel_dataset.Outputs[Excel Source Output].Columns[arrival_date_month]"
+                      name="arrival_date_month"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load data to StageCanceled\Resort_Hotel_dataset.Outputs[Excel Source Output].Columns[arrival_date_week_number]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load data to StageCanceled\Resort_Hotel_dataset.Outputs[Excel Source Output].ExternalColumns[arrival_date_week_number]"
+                      lineageId="Package\Load data to StageCanceled\Resort_Hotel_dataset.Outputs[Excel Source Output].Columns[arrival_date_week_number]"
+                      name="arrival_date_week_number"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load data to StageCanceled\Resort_Hotel_dataset.Outputs[Excel Source Output].Columns[arrival_date_day_of_month]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load data to StageCanceled\Resort_Hotel_dataset.Outputs[Excel Source Output].ExternalColumns[arrival_date_day_of_month]"
+                      lineageId="Package\Load data to StageCanceled\Resort_Hotel_dataset.Outputs[Excel Source Output].Columns[arrival_date_day_of_month]"
+                      name="arrival_date_day_of_month"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load data to StageCanceled\Resort_Hotel_dataset.Outputs[Excel Source Output].Columns[adr]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load data to StageCanceled\Resort_Hotel_dataset.Outputs[Excel Source Output].ExternalColumns[adr]"
+                      lineageId="Package\Load data to StageCanceled\Resort_Hotel_dataset.Outputs[Excel Source Output].Columns[adr]"
+                      name="adr"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Load data to StageCanceled\Resort_Hotel_dataset.Outputs[Excel Source Output].ExternalColumns[hotel]"
+                      dataType="wstr"
+                      length="255"
+                      name="hotel" />
+                    <externalMetadataColumn
+                      refId="Package\Load data to StageCanceled\Resort_Hotel_dataset.Outputs[Excel Source Output].ExternalColumns[is_canceled]"
+                      dataType="r8"
+                      name="is_canceled" />
+                    <externalMetadataColumn
+                      refId="Package\Load data to StageCanceled\Resort_Hotel_dataset.Outputs[Excel Source Output].ExternalColumns[lead_time]"
+                      dataType="r8"
+                      name="lead_time" />
+                    <externalMetadataColumn
+                      refId="Package\Load data to StageCanceled\Resort_Hotel_dataset.Outputs[Excel Source Output].ExternalColumns[arrival_date_year]"
+                      dataType="r8"
+                      name="arrival_date_year" />
+                    <externalMetadataColumn
+                      refId="Package\Load data to StageCanceled\Resort_Hotel_dataset.Outputs[Excel Source Output].ExternalColumns[arrival_date_month]"
+                      dataType="r8"
+                      name="arrival_date_month" />
+                    <externalMetadataColumn
+                      refId="Package\Load data to StageCanceled\Resort_Hotel_dataset.Outputs[Excel Source Output].ExternalColumns[arrival_date_month2]"
+                      dataType="wstr"
+                      length="255"
+                      name="arrival_date_month2" />
+                    <externalMetadataColumn
+                      refId="Package\Load data to StageCanceled\Resort_Hotel_dataset.Outputs[Excel Source Output].ExternalColumns[arrival_date_week_number]"
+                      dataType="r8"
+                      name="arrival_date_week_number" />
+                    <externalMetadataColumn
+                      refId="Package\Load data to StageCanceled\Resort_Hotel_dataset.Outputs[Excel Source Output].ExternalColumns[arrival_date_day_of_month]"
+                      dataType="r8"
+                      name="arrival_date_day_of_month" />
+                    <externalMetadataColumn
+                      refId="Package\Load data to StageCanceled\Resort_Hotel_dataset.Outputs[Excel Source Output].ExternalColumns[stays_in_weekend_nights]"
+                      dataType="r8"
+                      name="stays_in_weekend_nights" />
+                    <externalMetadataColumn
+                      refId="Package\Load data to StageCanceled\Resort_Hotel_dataset.Outputs[Excel Source Output].ExternalColumns[stays_in_week_nights]"
+                      dataType="r8"
+                      name="stays_in_week_nights" />
+                    <externalMetadataColumn
+                      refId="Package\Load data to StageCanceled\Resort_Hotel_dataset.Outputs[Excel Source Output].ExternalColumns[adults]"
+                      dataType="r8"
+                      name="adults" />
+                    <externalMetadataColumn
+                      refId="Package\Load data to StageCanceled\Resort_Hotel_dataset.Outputs[Excel Source Output].ExternalColumns[children]"
+                      dataType="r8"
+                      name="children" />
+                    <externalMetadataColumn
+                      refId="Package\Load data to StageCanceled\Resort_Hotel_dataset.Outputs[Excel Source Output].ExternalColumns[babies]"
+                      dataType="r8"
+                      name="babies" />
+                    <externalMetadataColumn
+                      refId="Package\Load data to StageCanceled\Resort_Hotel_dataset.Outputs[Excel Source Output].ExternalColumns[meal]"
+                      dataType="wstr"
+                      length="255"
+                      name="meal" />
+                    <externalMetadataColumn
+                      refId="Package\Load data to StageCanceled\Resort_Hotel_dataset.Outputs[Excel Source Output].ExternalColumns[country]"
+                      dataType="wstr"
+                      length="255"
+                      name="country" />
+                    <externalMetadataColumn
+                      refId="Package\Load data to StageCanceled\Resort_Hotel_dataset.Outputs[Excel Source Output].ExternalColumns[market_segment]"
+                      dataType="wstr"
+                      length="255"
+                      name="market_segment" />
+                    <externalMetadataColumn
+                      refId="Package\Load data to StageCanceled\Resort_Hotel_dataset.Outputs[Excel Source Output].ExternalColumns[distribution_channel]"
+                      dataType="wstr"
+                      length="255"
+                      name="distribution_channel" />
+                    <externalMetadataColumn
+                      refId="Package\Load data to StageCanceled\Resort_Hotel_dataset.Outputs[Excel Source Output].ExternalColumns[is_repeated_guest]"
+                      dataType="r8"
+                      name="is_repeated_guest" />
+                    <externalMetadataColumn
+                      refId="Package\Load data to StageCanceled\Resort_Hotel_dataset.Outputs[Excel Source Output].ExternalColumns[previous_cancellations]"
+                      dataType="r8"
+                      name="previous_cancellations" />
+                    <externalMetadataColumn
+                      refId="Package\Load data to StageCanceled\Resort_Hotel_dataset.Outputs[Excel Source Output].ExternalColumns[previous_bookings_not_canceled]"
+                      dataType="r8"
+                      name="previous_bookings_not_canceled" />
+                    <externalMetadataColumn
+                      refId="Package\Load data to StageCanceled\Resort_Hotel_dataset.Outputs[Excel Source Output].ExternalColumns[reserved_room_type]"
+                      dataType="wstr"
+                      length="255"
+                      name="reserved_room_type" />
+                    <externalMetadataColumn
+                      refId="Package\Load data to StageCanceled\Resort_Hotel_dataset.Outputs[Excel Source Output].ExternalColumns[assigned_room_type]"
+                      dataType="wstr"
+                      length="255"
+                      name="assigned_room_type" />
+                    <externalMetadataColumn
+                      refId="Package\Load data to StageCanceled\Resort_Hotel_dataset.Outputs[Excel Source Output].ExternalColumns[booking_changes]"
+                      dataType="r8"
+                      name="booking_changes" />
+                    <externalMetadataColumn
+                      refId="Package\Load data to StageCanceled\Resort_Hotel_dataset.Outputs[Excel Source Output].ExternalColumns[deposit_type]"
+                      dataType="wstr"
+                      length="255"
+                      name="deposit_type" />
+                    <externalMetadataColumn
+                      refId="Package\Load data to StageCanceled\Resort_Hotel_dataset.Outputs[Excel Source Output].ExternalColumns[agent]"
+                      dataType="r8"
+                      name="agent" />
+                    <externalMetadataColumn
+                      refId="Package\Load data to StageCanceled\Resort_Hotel_dataset.Outputs[Excel Source Output].ExternalColumns[company]"
+                      dataType="wstr"
+                      length="255"
+                      name="company" />
+                    <externalMetadataColumn
+                      refId="Package\Load data to StageCanceled\Resort_Hotel_dataset.Outputs[Excel Source Output].ExternalColumns[days_in_waiting_list]"
+                      dataType="r8"
+                      name="days_in_waiting_list" />
+                    <externalMetadataColumn
+                      refId="Package\Load data to StageCanceled\Resort_Hotel_dataset.Outputs[Excel Source Output].ExternalColumns[customer_type]"
+                      dataType="wstr"
+                      length="255"
+                      name="customer_type" />
+                    <externalMetadataColumn
+                      refId="Package\Load data to StageCanceled\Resort_Hotel_dataset.Outputs[Excel Source Output].ExternalColumns[adr]"
+                      dataType="r8"
+                      name="adr" />
+                    <externalMetadataColumn
+                      refId="Package\Load data to StageCanceled\Resort_Hotel_dataset.Outputs[Excel Source Output].ExternalColumns[required_car_parking_spaces]"
+                      dataType="r8"
+                      name="required_car_parking_spaces" />
+                    <externalMetadataColumn
+                      refId="Package\Load data to StageCanceled\Resort_Hotel_dataset.Outputs[Excel Source Output].ExternalColumns[total_of_special_requests]"
+                      dataType="r8"
+                      name="total_of_special_requests" />
+                    <externalMetadataColumn
+                      refId="Package\Load data to StageCanceled\Resort_Hotel_dataset.Outputs[Excel Source Output].ExternalColumns[reservation_status]"
+                      dataType="wstr"
+                      length="255"
+                      name="reservation_status" />
+                    <externalMetadataColumn
+                      refId="Package\Load data to StageCanceled\Resort_Hotel_dataset.Outputs[Excel Source Output].ExternalColumns[reservation_status_date]"
+                      dataType="date"
+                      name="reservation_status_date" />
+                    <externalMetadataColumn
+                      refId="Package\Load data to StageCanceled\Resort_Hotel_dataset.Outputs[Excel Source Output].ExternalColumns[name]"
+                      dataType="wstr"
+                      length="255"
+                      name="name" />
+                    <externalMetadataColumn
+                      refId="Package\Load data to StageCanceled\Resort_Hotel_dataset.Outputs[Excel Source Output].ExternalColumns[email]"
+                      dataType="wstr"
+                      length="255"
+                      name="email" />
+                    <externalMetadataColumn
+                      refId="Package\Load data to StageCanceled\Resort_Hotel_dataset.Outputs[Excel Source Output].ExternalColumns[phone-number]"
+                      dataType="wstr"
+                      length="255"
+                      name="phone-number" />
+                    <externalMetadataColumn
+                      refId="Package\Load data to StageCanceled\Resort_Hotel_dataset.Outputs[Excel Source Output].ExternalColumns[credit_card]"
+                      dataType="wstr"
+                      length="255"
+                      name="credit_card" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Load data to StageCanceled\Resort_Hotel_dataset.Outputs[Excel Source Error Output]"
+                  isErrorOut="true"
+                  name="Excel Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load data to StageCanceled\Resort_Hotel_dataset.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load data to StageCanceled\Resort_Hotel_dataset.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load data to StageCanceled\Resort_Hotel_dataset.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load data to StageCanceled\Resort_Hotel_dataset.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                    <outputColumn
+                      refId="Package\Load data to StageCanceled\Resort_Hotel_dataset.Outputs[Excel Source Error Output].Columns[hotel]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Load data to StageCanceled\Resort_Hotel_dataset.Outputs[Excel Source Error Output].Columns[hotel]"
+                      name="hotel" />
+                    <outputColumn
+                      refId="Package\Load data to StageCanceled\Resort_Hotel_dataset.Outputs[Excel Source Error Output].Columns[is_canceled]"
+                      dataType="r8"
+                      lineageId="Package\Load data to StageCanceled\Resort_Hotel_dataset.Outputs[Excel Source Error Output].Columns[is_canceled]"
+                      name="is_canceled" />
+                    <outputColumn
+                      refId="Package\Load data to StageCanceled\Resort_Hotel_dataset.Outputs[Excel Source Error Output].Columns[arrival_date_year]"
+                      dataType="r8"
+                      lineageId="Package\Load data to StageCanceled\Resort_Hotel_dataset.Outputs[Excel Source Error Output].Columns[arrival_date_year]"
+                      name="arrival_date_year" />
+                    <outputColumn
+                      refId="Package\Load data to StageCanceled\Resort_Hotel_dataset.Outputs[Excel Source Error Output].Columns[arrival_date_month]"
+                      dataType="r8"
+                      lineageId="Package\Load data to StageCanceled\Resort_Hotel_dataset.Outputs[Excel Source Error Output].Columns[arrival_date_month]"
+                      name="arrival_date_month" />
+                    <outputColumn
+                      refId="Package\Load data to StageCanceled\Resort_Hotel_dataset.Outputs[Excel Source Error Output].Columns[arrival_date_week_number]"
+                      dataType="r8"
+                      lineageId="Package\Load data to StageCanceled\Resort_Hotel_dataset.Outputs[Excel Source Error Output].Columns[arrival_date_week_number]"
+                      name="arrival_date_week_number" />
+                    <outputColumn
+                      refId="Package\Load data to StageCanceled\Resort_Hotel_dataset.Outputs[Excel Source Error Output].Columns[arrival_date_day_of_month]"
+                      dataType="r8"
+                      lineageId="Package\Load data to StageCanceled\Resort_Hotel_dataset.Outputs[Excel Source Error Output].Columns[arrival_date_day_of_month]"
+                      name="arrival_date_day_of_month" />
+                    <outputColumn
+                      refId="Package\Load data to StageCanceled\Resort_Hotel_dataset.Outputs[Excel Source Error Output].Columns[adr]"
+                      dataType="r8"
+                      lineageId="Package\Load data to StageCanceled\Resort_Hotel_dataset.Outputs[Excel Source Error Output].Columns[adr]"
+                      name="adr" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Load data to StageCanceled\Script Component"
+              componentClassID="Microsoft.ManagedComponentHost"
+              contactInfo="Includes and runs custom script code. For example, apply a business rule that limits the range of valid values in an &quot;income&quot; column or add values in two columns and calculate the average of the sum.;Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;13"
+              description="Includes and runs custom script code. For example, apply a business rule that limits the range of valid values in an &quot;income&quot; column or add values in two columns and calculate the average of the sum."
+              name="Script Component"
+              version="13">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Stores the source code of the component"
+                  isArray="true"
+                  name="SourceCode"
+                  state="cdata">
+                  <arrayElements
+                    arrayElementCount="30">
+                    <arrayElement
+                      dataType="System.String"><![CDATA[Properties\AssemblyInfo.cs]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[UTF8]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[using System.Reflection;
+using System.Runtime.CompilerServices;
+
+//
+// General Information about an assembly is controlled through the following 
+// set of attributes. Change these attribute values to modify the information
+// associated with an assembly.
+//
+[assembly: AssemblyTitle("SC_6039f9f2a78b4781b99d4fc958962164")]
+[assembly: AssemblyDescription("")]
+[assembly: AssemblyConfiguration("")]
+[assembly: AssemblyCompany("")]
+[assembly: AssemblyProduct("SC_6039f9f2a78b4781b99d4fc958962164")]
+[assembly: AssemblyCopyright("Copyright @  2024")]
+[assembly: AssemblyTrademark("")]
+[assembly: AssemblyCulture("")]
+//
+// Version information for an assembly consists of the following four values:
+//
+//      Major Version
+//      Minor Version 
+//      Build Number
+//      Revision
+//
+// You can specify all the values or you can default the Revision and Build Numbers 
+// by using the '*' as shown below:
+
+[assembly: AssemblyVersion("1.0.0.0")]
+]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[SC_6039f9f2a78b4781b99d4fc958962164.csproj]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[UTF8]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ProjectTypeGuids>{30D016F9-3734-4E33-A861-5E7D899E18F3};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{b711219b-b891-4a1e-a63f-a273f699d3f9}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SC_6039f9f2a78b4781b99d4fc958962164</RootNamespace>
+    <AssemblyName>SC_6039f9f2a78b4781b99d4fc958962164</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ResolveAssemblyReferenceIgnoreTargetFrameworkAttributeVersionMismatch>true</ResolveAssemblyReferenceIgnoreTargetFrameworkAttributeVersionMismatch>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>.\bin\Debug\</OutputPath>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <DebugSymbols>false</DebugSymbols>
+    <Optimize>true</Optimize>
+    <OutputPath>.\bin\Release\</OutputPath>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.SqlServer.TxScript, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Reference Include="Microsoft.SqlServer.DTSRuntimeWrap, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Reference Include="Microsoft.SqlServer.DTSPipelineWrap, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Reference Include="Microsoft.SqlServer.PipelineHost, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Compile Include="main.cs" />
+    <Compile Include="BufferWrapper.cs" />
+    <Compile Include="ComponentWrapper.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <AppDesigner Include="Properties\" />
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <!-- Include the build rules for a C# project.-->
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- This section defines VSTA properties that describe the host-changable project properties. -->
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{30D016F9-3734-4E33-A861-5E7D899E18F3}">
+        <ProjectProperties HostName="ScriptComponent" HostPackage="{B3A685AA-7EAF-4BC6-9940-57959FA5AC07}" ApplicationType="usd" Language="cs" TemplatesPath="" DebugInfoExeName="" DebugInfoCommandLine="" DebugInfoWorkingDir="" IconImageList="" />
+        <Host Name="ScriptComponent" GeneratedNamespace="SC_6039f9f2a78b4781b99d4fc958962164" IconIndex="0"></Host>
+        <ProjectClient>
+          <HostIdentifier>SSIS_SC160</HostIdentifier>
+        </ProjectClient>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[main.cs]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[UTF8]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[#region Help:  Introduction to the Script Component
+/* The Script Component allows you to perform virtually any operation that can be accomplished in
+ * a .Net application within the context of an Integration Services data flow.
+ *
+ * Expand the other regions which have "Help" prefixes for examples of specific ways to use
+ * Integration Services features within this script component. */
+#endregion
+
+#region Namespaces
+using System;
+using System.Data;
+using Microsoft.SqlServer.Dts.Pipeline.Wrapper;
+using Microsoft.SqlServer.Dts.Runtime.Wrapper;
+#endregion
+
+/// <summary>
+/// This is the class to which to add your code.  Do not change the name, attributes, or parent
+/// of this class.
+/// </summary>
+[Microsoft.SqlServer.Dts.Pipeline.SSISScriptComponentEntryPointAttribute]
+public class ScriptMain : UserComponent
+{
+    #region Help:  Using Integration Services variables and parameters
+    /* To use a variable in this script, first ensure that the variable has been added to
+     * either the list contained in the ReadOnlyVariables property or the list contained in
+     * the ReadWriteVariables property of this script component, according to whether or not your
+     * code needs to write into the variable.  To do so, save this script, close this instance of
+     * Visual Studio, and update the ReadOnlyVariables and ReadWriteVariables properties in the
+     * Script Transformation Editor window.
+     * To use a parameter in this script, follow the same steps. Parameters are always read-only.
+     *
+     * Example of reading from a variable or parameter:
+     *  DateTime startTime = Variables.MyStartTime;
+     *
+     * Example of writing to a variable:
+     *  Variables.myStringVariable = "new value";
+     */
+    #endregion
+
+    #region Help:  Using Integration Services Connnection Managers
+    /* Some types of connection managers can be used in this script component.  See the help topic
+     * "Working with Connection Managers Programatically" for details.
+     *
+     * To use a connection manager in this script, first ensure that the connection manager has
+     * been added to either the list of connection managers on the Connection Managers page of the
+     * script component editor.  To add the connection manager, save this script, close this instance of
+     * Visual Studio, and add the Connection Manager to the list.
+     *
+     * If the component needs to hold a connection open while processing rows, override the
+     * AcquireConnections and ReleaseConnections methods.
+     * 
+     * Example of using an ADO.Net connection manager to acquire a SqlConnection:
+     *  object rawConnection = Connections.SalesDB.AcquireConnection(transaction);
+     *  SqlConnection salesDBConn = (SqlConnection)rawConnection;
+     *
+     * Example of using a File connection manager to acquire a file path:
+     *  object rawConnection = Connections.Prices_zip.AcquireConnection(transaction);
+     *  string filePath = (string)rawConnection;
+     *
+     * Example of releasing a connection manager:
+     *  Connections.SalesDB.ReleaseConnection(rawConnection);
+     */
+    #endregion
+
+    #region Help:  Firing Integration Services Events
+    /* This script component can fire events.
+     *
+     * Example of firing an error event:
+     *  ComponentMetaData.FireError(10, "Process Values", "Bad value", "", 0, out cancel);
+     *
+     * Example of firing an information event:
+     *  ComponentMetaData.FireInformation(10, "Process Values", "Processing has started", "", 0, fireAgain);
+     *
+     * Example of firing a warning event:
+     *  ComponentMetaData.FireWarning(10, "Process Values", "No rows were received", "", 0);
+     */
+    #endregion
+
+    /// <summary>
+    /// This method is called once, before rows begin to be processed in the data flow.
+    ///
+    /// You can remove this method if you don't need to do anything here.
+    /// </summary>
+    public override void PreExecute()
+    {
+        base.PreExecute();
+        /*
+         * Add your code here
+         */
+    }
+
+    /// <summary>
+    /// This method is called after all the rows have passed through this component.
+    ///
+    /// You can delete this method if you don't need to do anything here.
+    /// </summary>
+    public override void PostExecute()
+    {
+        base.PostExecute();
+        /*
+         * Add your code here
+         */
+    }
+
+    /// <summary>
+    /// This method is called once for every row that passes through the component from Input0.
+    ///
+    /// Example of reading a value from a column in the the row:
+    ///  string zipCode = Row.ZipCode
+    ///
+    /// Example of writing a value to a column in the row:
+    ///  Row.ZipCode = zipCode
+    /// </summary>
+    /// <param name="Row">The row that is currently passing through the component</param>
+    int count = 0;
+    public override void Input0_ProcessInputRow(Input0Buffer Row)
+    {
+        /*
+         * Add your code here
+         */
+        count++;
+        Row.NumberKey = count;
+        Row.DateKey = (int)(Row.arrivaldateyear * 10000 +
+            Row.arrivaldatemonth*100 + Row.arrivaldatedayofmonth);
+        if(Row.hotel == "Resort Hotel")
+        {
+            Row.HotelKey = 1;
+        }
+        else
+        {
+            Row.HotelKey = 2;
+        }
+    }
+
+}
+]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[BufferWrapper.cs]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[UTF8]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[/* THIS IS AUTO-GENERATED CODE THAT WILL BE OVERWRITTEN! DO NOT EDIT!
+*  Microsoft SQL Server Integration Services buffer wrappers
+*  This module defines classes for accessing data flow buffers
+*  THIS IS AUTO-GENERATED CODE THAT WILL BE OVERWRITTEN! DO NOT EDIT! */
+
+
+
+using System;
+using System.Data;
+using Microsoft.SqlServer.Dts.Pipeline;
+using Microsoft.SqlServer.Dts.Pipeline.Wrapper;
+
+public class Input0Buffer: ScriptBuffer
+
+{
+    public Input0Buffer(PipelineBuffer Buffer, int[] BufferColumnIndexes, OutputNameMap OutputMap)
+        : base(Buffer, BufferColumnIndexes, OutputMap)
+    {
+    }
+
+    public String hotel
+    {
+        get
+        {
+            return Buffer.GetString(BufferColumnIndexes[0]);
+        }
+    }
+    public bool hotel_IsNull
+    {
+        get
+        {
+            return IsNull(0);
+        }
+    }
+
+    public Double iscanceled
+    {
+        get
+        {
+            return Buffer.GetDouble(BufferColumnIndexes[1]);
+        }
+    }
+    public bool iscanceled_IsNull
+    {
+        get
+        {
+            return IsNull(1);
+        }
+    }
+
+    public Double arrivaldateyear
+    {
+        get
+        {
+            return Buffer.GetDouble(BufferColumnIndexes[2]);
+        }
+    }
+    public bool arrivaldateyear_IsNull
+    {
+        get
+        {
+            return IsNull(2);
+        }
+    }
+
+    public Double arrivaldatemonth
+    {
+        get
+        {
+            return Buffer.GetDouble(BufferColumnIndexes[3]);
+        }
+    }
+    public bool arrivaldatemonth_IsNull
+    {
+        get
+        {
+            return IsNull(3);
+        }
+    }
+
+    public Double arrivaldateweeknumber
+    {
+        get
+        {
+            return Buffer.GetDouble(BufferColumnIndexes[4]);
+        }
+    }
+    public bool arrivaldateweeknumber_IsNull
+    {
+        get
+        {
+            return IsNull(4);
+        }
+    }
+
+    public Double arrivaldatedayofmonth
+    {
+        get
+        {
+            return Buffer.GetDouble(BufferColumnIndexes[5]);
+        }
+    }
+    public bool arrivaldatedayofmonth_IsNull
+    {
+        get
+        {
+            return IsNull(5);
+        }
+    }
+
+    public Double adr
+    {
+        get
+        {
+            return Buffer.GetDouble(BufferColumnIndexes[6]);
+        }
+    }
+    public bool adr_IsNull
+    {
+        get
+        {
+            return IsNull(6);
+        }
+    }
+
+    public Int32 NumberKey
+    {
+        set
+        {
+            this[7] = value;
+        }
+    }
+    public bool NumberKey_IsNull
+    {
+        set
+        {
+            if (value)
+            {
+                SetNull(7);
+            }
+            else
+            {
+                throw new InvalidOperationException("IsNull property cannot be set to False. Assign a value to the column instead.");
+            }
+        }
+    }
+
+    public Int32 DateKey
+    {
+        set
+        {
+            this[8] = value;
+        }
+    }
+    public bool DateKey_IsNull
+    {
+        set
+        {
+            if (value)
+            {
+                SetNull(8);
+            }
+            else
+            {
+                throw new InvalidOperationException("IsNull property cannot be set to False. Assign a value to the column instead.");
+            }
+        }
+    }
+
+    public Int32 HotelKey
+    {
+        set
+        {
+            this[9] = value;
+        }
+    }
+    public bool HotelKey_IsNull
+    {
+        set
+        {
+            if (value)
+            {
+                SetNull(9);
+            }
+            else
+            {
+                throw new InvalidOperationException("IsNull property cannot be set to False. Assign a value to the column instead.");
+            }
+        }
+    }
+
+    new public bool NextRow()
+    {
+        return base.NextRow();
+    }
+
+    new public bool EndOfRowset()
+    {
+        return base.EndOfRowset();
+    }
+
+}
+]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[Properties\Resources.resx]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[UTF8]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+</root>]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[ComponentWrapper.cs]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[UTF8]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[/* THIS IS AUTO-GENERATED CODE THAT WILL BE OVERWRITTEN! DO NOT EDIT!
+*  Microsoft SQL Server Integration Services component wrapper
+*  This module defines the base class for your component
+*  THIS IS AUTO-GENERATED CODE THAT WILL BE OVERWRITTEN! DO NOT EDIT! */
+
+using System;
+using System.Data;
+using Microsoft.SqlServer.Dts.Pipeline;
+using Microsoft.SqlServer.Dts.Pipeline.Wrapper;
+using Microsoft.SqlServer.Dts.Runtime.Wrapper;
+
+public class UserComponent: ScriptComponent
+{
+    public Connections Connections;
+    public Variables Variables;
+    public UserComponent()
+    {
+        Connections = new Connections(this);
+        Variables = new Variables(this);
+    }
+
+    public override void ProcessInput(int InputID, string InputName, PipelineBuffer Buffer, OutputNameMap OutputMap)
+    {
+
+        if (InputName.Equals(@"Input 0", StringComparison.Ordinal))
+        {
+            Input0_ProcessInput(new Input0Buffer(Buffer, GetColumnIndexes(InputID), OutputMap));
+        }
+
+    }
+
+    public virtual void Input0_ProcessInput(Input0Buffer Buffer)
+    {
+        while (Buffer.NextRow())
+        {
+            Input0_ProcessInputRow(Buffer);
+        }
+    }
+
+    public virtual void Input0_ProcessInputRow(Input0Buffer Row)
+    {
+    }
+
+}
+
+public class Connections
+{
+    ScriptComponent ParentComponent;
+
+    public Connections(ScriptComponent Component)
+    {
+        ParentComponent = Component;
+    }
+
+}
+
+public class Variables
+{
+    ScriptComponent ParentComponent;
+
+    public Variables(ScriptComponent Component)
+    {
+        ParentComponent = Component;
+    }
+
+}
+]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[Project]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[UTF16LE]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[<?xml version="1.0" encoding="UTF-16" standalone="yes"?>
+<c:Project xmlns:c="http://schemas.microsoft.com/codeprojectml/2010/08/main" xmlns:msb="http://schemas.microsoft.com/developer/msbuild/2003" runtimeVersion="3.0" schemaVersion="1.0">
+  <msb:PropertyGroup>
+    <msb:Language>msBuild</msb:Language>
+    <msb:CodeName>SC_6039f9f2a78b4781b99d4fc958962164</msb:CodeName>
+    <msb:DisplayName>SC_6039f9f2a78b4781b99d4fc958962164</msb:DisplayName>
+    <msb:ProjectId>{A675FC0D-38A8-40A2-9EA1-172ADC2933B9}</msb:ProjectId>
+  </msb:PropertyGroup>
+  <msb:ItemGroup>
+    <msb:Project Include="SC_6039f9f2a78b4781b99d4fc958962164.csproj" />
+    <msb:File Include="main.cs" />
+    <msb:File Include="BufferWrapper.cs" />
+    <msb:File Include="Properties\Settings.Designer.cs" />
+    <msb:File Include="Properties\Settings.settings" />
+    <msb:File Include="Properties\AssemblyInfo.cs" />
+    <msb:File Include="Properties\Resources.resx" />
+    <msb:File Include="Properties\Resources.Designer.cs" />
+    <msb:File Include="ComponentWrapper.cs" />
+  </msb:ItemGroup>
+</c:Project>]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[Properties\Settings.Designer.cs]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[UTF8]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[//------------------------------------------------------------------------------
+// <auto-generated>
+//     This code was generated by a tool.
+//
+//     Changes to this file may cause incorrect behavior and will be lost if
+//     the code is regenerated.
+// </auto-generated>
+//------------------------------------------------------------------------------
+
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="SC_6039f9f2a78b4781b99d4fc958962164.Properties.Settings.get_Default():SC_6039f9f2a78b4781b99d4fc958962164.Properties.Sett" +
+    "ings")]
+
+namespace SC_6039f9f2a78b4781b99d4fc958962164.Properties {
+    
+    
+    internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
+        
+        [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
+        private static Settings defaultInstance = new Settings();
+        
+        public static Settings Default {
+            get {
+                return defaultInstance;
+            }
+        }
+    }
+}
+]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[Properties\Settings.settings]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[UTF8]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[<?xml version='1.0' encoding='iso-8859-1'?>
+<SettingsFile xmlns="uri:settings" CurrentProfile="(Default)">
+  <Profiles>
+    <Profile Name="(Default)" />
+  </Profiles>
+  <Settings />
+</SettingsFile>]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[Properties\Resources.Designer.cs]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[UTF8]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[//------------------------------------------------------------------------------
+// <auto-generated>
+//     This code was generated by a tool.
+//
+//     Changes to this file may cause incorrect behavior and will be lost if
+//     the code is regenerated.
+// </auto-generated>
+//------------------------------------------------------------------------------
+
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="SC_6039f9f2a78b4781b99d4fc958962164.Properties.Resources.get_ResourceManager():System.Resources.Resou" +
+    "rceManager")]
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="SC_6039f9f2a78b4781b99d4fc958962164.Properties.Resources.get_Culture():System.Globalization.CultureIn" +
+    "fo")]
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="SC_6039f9f2a78b4781b99d4fc958962164.Properties.Resources.set_Culture(System.Globalization.CultureInfo" +
+    "):Void")]
+
+namespace SC_6039f9f2a78b4781b99d4fc958962164.Properties {
+    
+    
+    /// <summary>
+    ///   A strongly-typed resource class, for looking up localized strings, etc.
+    /// </summary>
+    // This class was auto-generated by the StronglyTypedResourceBuilder
+    // class via a tool like ResGen or Visual Studio.
+    // To add or remove a member, edit your .ResX file then rerun ResGen
+    // with the /str option, or rebuild your VS project.
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+    internal class Resources {
+        
+        private static global::System.Resources.ResourceManager resourceMan;
+        
+        private static global::System.Globalization.CultureInfo resourceCulture;
+        
+        [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
+        internal Resources() {
+        }
+        
+        /// <summary>
+        ///   Returns the cached ResourceManager instance used by this class.
+        /// </summary>
+        [global::System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        internal static global::System.Resources.ResourceManager ResourceManager {
+            get {
+                if ((resourceMan == null)) {
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("SC_6039f9f2a78b4781b99d4fc958962164.Properties.Resources", typeof(Resources).Assembly);
+                    resourceMan = temp;
+                }
+                return resourceMan;
+            }
+        }
+        
+        /// <summary>
+        ///   Overrides the current thread's CurrentUICulture property for all
+        ///   resource lookups using this strongly typed resource class.
+        /// </summary>
+        [global::System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        internal static global::System.Globalization.CultureInfo Culture {
+            get {
+                return resourceCulture;
+            }
+            set {
+                resourceCulture = value;
+            }
+        }
+    }
+}
+]]></arrayElement>
+                  </arrayElements>
+                </property>
+                <property
+                  dataType="System.String"
+                  description="Stores the binary representation of the component"
+                  isArray="true"
+                  name="BinaryCode"
+                  state="cdata">
+                  <arrayElements
+                    arrayElementCount="2">
+                    <arrayElement
+                      dataType="System.String"><![CDATA[SC_6039f9f2a78b4781b99d4fc958962164.dll]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[TVqQAAMAAAAEAAAA//8AALgAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAgAAAAA4fug4AtAnNIbgBTM0hVGhpcyBwcm9ncmFtIGNhbm5vdCBiZSBydW4gaW4gRE9TIG1v
+ZGUuDQ0KJAAAAAAAAABQRQAATAEDALxBTmYAAAAAAAAAAOAAIiALATAAABgAAAAIAAAAAAAAdjYA
+AAAgAAAAQAAAAAAAEAAgAAAAAgAABAAAAAAAAAAGAAAAAAAAAACAAAAAAgAAAAAAAAMAYIUAABAA
+ABAAAAAAEAAAEAAAAAAAABAAAAAAAAAAAAAAACQ2AABPAAAAAEAAAEgEAAAAAAAAAAAAAAAAAAAA
+AAAAAGAAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAIAAACAAAAAAAAAAAAAAACCAAAEgAAAAAAAAAAAAAAC50ZXh0AAAAfBYAAAAgAAAAGAAAAAIA
+AAAAAAAAAAAAAAAAACAAAGAucnNyYwAAAEgEAAAAQAAAAAYAAAAaAAAAAAAAAAAAAAAAAABAAABA
+LnJlbG9jAAAMAAAAAGAAAAACAAAAIAAAAAAAAAAAAAAAAAAAQAAAQgAAAAAAAAAAAAAAAAAAAABY
+NgAAAAAAAEgAAAACAAUAGCMAAFQSAAABAAAAAAAAAGw1AAC4AAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAB4CKBAAAAoqHgIoEQAACioTMAQAawAAAAAAAAACAnsBAAAE
+F1h9AQAABAMCewEAAARvFAAABgMDbwoAAAYjAAAAAACIw0BaA28MAAAGIwAAAAAAAFlAWlgDbxAA
+AAZYaW8WAAAGA28GAAAGcgEAAHAoEgAACiwIAxdvGAAABioDGG8YAAAGKh4CKBwAAAYqKgIDBAUo
+EwAACipSAnsUAAAKAnsVAAAKFpRvFgAACioiAhYoFwAACipSAnsUAAAKAnsVAAAKF5RvGAAACioi
+AhcoFwAACipSAnsUAAAKAnsVAAAKGJRvGAAACioiAhgoFwAACipSAnsUAAAKAnsVAAAKGZRvGAAA
+CioiAhkoFwAACipSAnsUAAAKAnsVAAAKGpRvGAAACioiAhooFwAACipSAnsUAAAKAnsVAAAKG5Rv
+GAAACioiAhsoFwAACipSAnsUAAAKAnsVAAAKHJRvGAAACioiAhwoFwAACio6Ah0DjBsAAAEoGQAA
+CipaAywIAh0oGgAACipyGwAAcHMbAAAKejoCHgOMGwAAASgZAAAKKloDLAgCHigaAAAKKnIbAABw
+cxsAAAp6PgIfCQOMGwAAASgZAAAKKl4DLAkCHwkoGgAACipyGwAAcHMbAAAKeh4CKBwAAAoqHgIo
+HQAACip+AigeAAAKAgJzIAAABn0CAAAEAgJzIQAABn0DAAAEKpIEcrgAAHAabx8AAAosFQIFAgMo
+IAAACg4EcwUAAAZvHgAABipKKwcCA28fAAAGA28aAAAGLfEqBio6AighAAAKAgN9BAAABCo6Aigh
+AAAKAgN9BQAABCoeAighAAAKKq5+BgAABC0ecsgAAHDQBwAAAigiAAAKbyMAAApzJAAACoAGAAAE
+fgYAAAQqGn4HAAAEKh4CgAcAAAQqGn4IAAAEKh4CKCUAAAoqLnMnAAAGgAgAAAQqAABCU0pCAQAB
+AAAAAAAMAAAAdjQuMC4zMDMxOQAAAAAFAGwAAAA0BwAAI34AAKAHAACoBwAAI1N0cmluZ3MAAAAA
+SA8AADwBAAAjVVMAhBAAABAAAAAjR1VJRAAAAJQQAADAAQAAI0Jsb2IAAAAAAAAAAgAAAVcVoAEJ
+AQAAAPoBMwAWAAABAAAAIAAAAAgAAAAIAAAAKAAAABMAAAAlAAAAEAAAAAMAAAAXAAAAGAAAAAEA
+AAAEAAAAAQAAAAAARQMBAAAAAAAGAAMCpQUGAJcCpQUGAE8BkgUPABkGAAAGAHwBsQQGAOYBsQQG
+AMcBsQQGAH4CsQQGACMCsQQGADwCsQQGAJMBsQQGAK4B0gIKAFcCnAAKAGQFnAAOAFUFnAAKAPoE
+nAAKAN8GnAAGAKIGaQQGADIBkgUGAHUFxQUGAO4EnAQSAAIBJQMSAGMBJQMSAOoAhwQGABcBpQUG
+AO8CaQQGAAEAaQQGAMMEaQQGAN0EaQQGAL0AaQQGAG4AaQQGAJEHsQQAAAAAKwAAAAAAAQABAAEA
+EAB8BAAAEAABAAEAAQAQAEgFAAA5AAIABQABABAAwQYAAEUAAgAcAAEAEACWBgAASQAEACAAAQAQ
+AFcGAABJAAUAIQAAABAAzAUoBkkABgAiAAABEACGBigGYQAIACYAAQDvBoAABgCWBoMABgBXBocA
+AQDPBosAAQDPBosAEQBwBI8AEQDaAJMAEQBUAJcAUCAAAAAAxgC1AgYAAQBYIAAAAADGAMACBgAB
+AGAgAAAAAMYARwebAAEA1yAAAAAAhhiFBQYAAgDfIAAAAACGGIUFIQACAOogAAAAAIYIOwOhAAUA
+/yAAAAAAhgjAA0gABQAIIQAAAACGCEUApQAFAB0hAAAAAIYIbQNIAAUAJiEAAAAAhggSBaUABQA7
+IQAAAACGCNEDSAAFAEQhAAAAAIYI9gKlAAUAWSEAAAAAhgiDA0gABQBiIQAAAACGCC4FpQAFAHch
+AAAAAIYI+wNIAAUAgCEAAAAAhggLA6UABQCVIQAAAACGCJ8DSAAFAJ4hAAAAAIYIJgWlAAUAsyEA
+AAAAhgjsA0gABQC8IQAAAACGCH8HAQAFAMshAAAAAIYIQwSpAAYA4iEAAAAAhghmBwEABwDxIQAA
+AACGCBwEqQAIAAgiAAAAAIYIcgcBAAkAGCIAAAAAhggvBKkACgAwIgAAAACGAF4HSAALADgiAAAA
+AIYAqQZIAAsAQCIAAAAAhhiFBQYACwBgIgAAAADGADoHrgALAIUiAAAAAMYBMwebAA8AmCIAAAAA
+xgFHB5sAEACaIgAAAACGGIUFuAARAKkiAAAAAIYYhQW4ABIAuCIAAAAAgxiFBQYAEwDAIgAAAACT
+CHEFvgATAOwiAAAAAJMIwgDDABMA8yIAAAAAkwjOAMgAEwD7IgAAAACWCLUGzgAUAAIjAAAAAIYY
+hQUGABQACiMAAAAAkRiLBdMAFAAAAAEAYgcAAAEAagUAAAIAYQYAAAMACAUAAAEAzAIAAAEAzAIA
+AAEAzAIAAAEAzAIAAAEAzAIAAAEAzAIAAAEANAAAAAIAkgAAAAMAagUAAAQACAUAAAEAagUAAAEA
+YgcAAAEA5QYAAAEA5QYAAAEAzAIJAIUFAQARAIUFBgAZAIUFCgApAIUFEAAxAIUFEAA5AIUFEABB
+AIUFEABJAIUFEABRAIUFEABZAIUFEABhAIUFEABpAIUFBgCZAIUFBgC5AIUFFQDJAIUFBgCJALUC
+BgCJAMACBgDRAJoHGwBxAIUFIQBxAGoFKwBxAGEGLwB5AOwCMwBxAFEEOAB5AGQAPQBxAGAEQgBx
+AFgEAQDhAIUFEABxAF4HSABxAKkGSACJAIUFBgDRAI8GTACJAHUGUwCRAIUFBgDxAIAAWQDxAI0H
+YAChAIUFZgDBAIUFBgAuAAsA9gAuABMA/wAuABsAHgEuACMAJwEuACsAUAEuADMAUAEuADsAUAEu
+AEMAJwEuAEsAVgEuAFMAUAEuAFsAbQFDAGMAuwHjAGsAuwEBAXsAuwGpAnMAHgHJAnMAHgEDAAEA
+BwAVAAgAFwAAAD8D1wAAAMQD2wAAAEkA3wAAAHED2wAAABYF3wAAANUD2wAAAPoC3wAAAIcD2wAA
+ADIF3wAAAP8D2wAAAA8D3wAAAKMD2wAAACoF3wAAAPAD2wAAAIMH4wAAAEcE2wAAAGoH4wAAACAE
+2wAAAHYH4wAAADME2wAAAHUF5wAAAOIA7AAAALkG8QACAAYAAwACAAcABQACAAgABwACAAkACQAC
+AAoACwACAAsADQACAAwADwACAA0AEQACAA4AEwACAA8AFQACABAAFwACABEAGQACABIAGwACABMA
+HQABABQAHwABABUAIQABABYAIwABABcAJQABABgAJwABABkAKQACACMAKwACACQALQABACUALQAC
+ACYALwAEgAAAAQAAAAAAAAAAAAAAAAAHAAAABAAAAAAAAAAAAAAAbgA8AAAAAAAQAAAAAAAAAAAA
+AAB3APUGAAAAABAAAAAAAAAAAAAAAHcAEgcAAAAABAAAAAAAAAAAAAAAbgBpBAAAAAAAAAAAAQAA
+ANYFAAAAAABJbnQzMgBTQ182MDM5ZjlmMmE3OGI0NzgxYjk5ZDRmYzk1ODk2MjE2NAA8TW9kdWxl
+PgBJbnB1dElEAG1zY29ybGliAGdldF9pc2NhbmNlbGVkAGRlZmF1bHRJbnN0YW5jZQBHZXREb3Vi
+bGUAUnVudGltZVR5cGVIYW5kbGUAR2V0VHlwZUZyb21IYW5kbGUASW5wdXROYW1lAE1pY3Jvc29m
+dC5TcWxTZXJ2ZXIuRHRzLlBpcGVsaW5lAFR5cGUAZ2V0X0N1bHR1cmUAc2V0X0N1bHR1cmUAcmVz
+b3VyY2VDdWx0dXJlAEFwcGxpY2F0aW9uU2V0dGluZ3NCYXNlAEVkaXRvckJyb3dzYWJsZVN0YXRl
+AENvbXBpbGVyR2VuZXJhdGVkQXR0cmlidXRlAERlYnVnZ2VyTm9uVXNlckNvZGVBdHRyaWJ1dGUA
+RGVidWdnYWJsZUF0dHJpYnV0ZQBFZGl0b3JCcm93c2FibGVBdHRyaWJ1dGUAQXNzZW1ibHlUaXRs
+ZUF0dHJpYnV0ZQBBc3NlbWJseVRyYWRlbWFya0F0dHJpYnV0ZQBUYXJnZXRGcmFtZXdvcmtBdHRy
+aWJ1dGUAQXNzZW1ibHlDb25maWd1cmF0aW9uQXR0cmlidXRlAEFzc2VtYmx5RGVzY3JpcHRpb25B
+dHRyaWJ1dGUAQ29tcGlsYXRpb25SZWxheGF0aW9uc0F0dHJpYnV0ZQBBc3NlbWJseVByb2R1Y3RB
+dHRyaWJ1dGUAQXNzZW1ibHlDb3B5cmlnaHRBdHRyaWJ1dGUAU1NJU1NjcmlwdENvbXBvbmVudEVu
+dHJ5UG9pbnRBdHRyaWJ1dGUAQXNzZW1ibHlDb21wYW55QXR0cmlidXRlAFJ1bnRpbWVDb21wYXRp
+YmlsaXR5QXR0cmlidXRlAFByZUV4ZWN1dGUAUG9zdEV4ZWN1dGUAdmFsdWUAU3lzdGVtLlJ1bnRp
+bWUuVmVyc2lvbmluZwBHZXRTdHJpbmcAZ2V0X2Fycml2YWxkYXRlbW9udGgAZ2V0X2Fycml2YWxk
+YXRlZGF5b2Ztb250aABTeXN0ZW0uQ29tcG9uZW50TW9kZWwAZ2V0X2hvdGVsAFNDXzYwMzlmOWYy
+YTc4YjQ3ODFiOTlkNGZjOTU4OTYyMTY0LmRsbABnZXRfaXNjYW5jZWxlZF9Jc051bGwAZ2V0X2Fy
+cml2YWxkYXRlbW9udGhfSXNOdWxsAGdldF9hcnJpdmFsZGF0ZWRheW9mbW9udGhfSXNOdWxsAGdl
+dF9ob3RlbF9Jc051bGwAZ2V0X2Fycml2YWxkYXRleWVhcl9Jc051bGwAZ2V0X2Fkcl9Jc051bGwA
+Z2V0X2Fycml2YWxkYXRld2Vla251bWJlcl9Jc051bGwAc2V0X0RhdGVLZXlfSXNOdWxsAHNldF9I
+b3RlbEtleV9Jc051bGwAc2V0X051bWJlcktleV9Jc051bGwAU2V0TnVsbABzZXRfSXRlbQBTeXN0
+ZW0AcmVzb3VyY2VNYW4AU2NyaXB0TWFpbgBTeXN0ZW0uQ29uZmlndXJhdGlvbgBTeXN0ZW0uR2xv
+YmFsaXphdGlvbgBTeXN0ZW0uUmVmbGVjdGlvbgBJbnZhbGlkT3BlcmF0aW9uRXhjZXB0aW9uAFN0
+cmluZ0NvbXBhcmlzb24AQ3VsdHVyZUluZm8AT3V0cHV0TmFtZU1hcABPdXRwdXRNYXAAZ2V0X2Fy
+cml2YWxkYXRleWVhcgBnZXRfYWRyAGdldF9hcnJpdmFsZGF0ZXdlZWtudW1iZXIASW5wdXQwQnVm
+ZmVyAFBpcGVsaW5lQnVmZmVyAFNjcmlwdEJ1ZmZlcgBnZXRfUmVzb3VyY2VNYW5hZ2VyAC5jdG9y
+AC5jY3RvcgBTeXN0ZW0uRGlhZ25vc3RpY3MAU3lzdGVtLlJ1bnRpbWUuQ29tcGlsZXJTZXJ2aWNl
+cwBTeXN0ZW0uUmVzb3VyY2VzAFNDXzYwMzlmOWYyYTc4YjQ3ODFiOTlkNGZjOTU4OTYyMTY0LlBy
+b3BlcnRpZXMuUmVzb3VyY2VzLnJlc291cmNlcwBEZWJ1Z2dpbmdNb2RlcwBTQ182MDM5ZjlmMmE3
+OGI0NzgxYjk5ZDRmYzk1ODk2MjE2NC5Qcm9wZXJ0aWVzAFZhcmlhYmxlcwBCdWZmZXJDb2x1bW5J
+bmRleGVzAEdldENvbHVtbkluZGV4ZXMAU2V0dGluZ3MARXF1YWxzAENvbm5lY3Rpb25zAE9iamVj
+dABFbmRPZlJvd3NldABnZXRfRGVmYXVsdABVc2VyQ29tcG9uZW50AFBhcmVudENvbXBvbmVudABT
+Y3JpcHRDb21wb25lbnQAY291bnQATWljcm9zb2Z0LlNxbFNlcnZlci5UeFNjcmlwdABNaWNyb3Nv
+ZnQuU3FsU2VydmVyLlBpcGVsaW5lSG9zdABJbnB1dDBfUHJvY2Vzc0lucHV0AElucHV0MF9Qcm9j
+ZXNzSW5wdXRSb3cATmV4dFJvdwBzZXRfRGF0ZUtleQBzZXRfSG90ZWxLZXkAc2V0X051bWJlcktl
+eQBnZXRfQXNzZW1ibHkAb3BfRXF1YWxpdHkAAAAAGVIAZQBzAG8AcgB0ACAASABvAHQAZQBsAACA
+m0kAcwBOAHUAbABsACAAcAByAG8AcABlAHIAdAB5ACAAYwBhAG4AbgBvAHQAIABiAGUAIABzAGUA
+dAAgAHQAbwAgAEYAYQBsAHMAZQAuACAAQQBzAHMAaQBnAG4AIABhACAAdgBhAGwAdQBlACAAdABv
+ACAAdABoAGUAIABjAG8AbAB1AG0AbgAgAGkAbgBzAHQAZQBhAGQALgAAD0kAbgBwAHUAdAAgADAA
+AHFTAEMAXwA2ADAAMwA5AGYAOQBmADIAYQA3ADgAYgA0ADcAOAAxAGIAOQA5AGQANABmAGMAOQA1
+ADgAOQA2ADIAMQA2ADQALgBQAHIAbwBwAGUAcgB0AGkAZQBzAC4AUgBlAHMAbwB1AHIAYwBlAHMA
+AAAAaP4VbFtMVEmAviHx/i+T9QAEIAEBCAMgAAEFIAEBEREEIAEBDgUgAQERWQUAAgIODgkgAwES
+PR0IEkEDBhI9AwYdCAQgAQ4IBCABAggEIAENCAUgAgEIHAMgAAIGIAICDhF1BSABHQgIBgABEnkR
+fQUgABKAgQcgAgEOEoCBCLd6XFYZNOCJCImEXc2AgMyRAgYIAwYSFAMGEhgDBhJFAwYSUQMGElUD
+BhIgBSABARIMAyAADgMgAA0EIAEBAgkgBAEIDhI9EkEFIAEBEkUEAAASUQQAABJVBQABARJVBAAA
+EiADAAABAygADgMoAAIDKAANAygACAQIABJRBAgAElUECAASIAgBAAgAAAAAAB4BAAEAVAIWV3Jh
+cE5vbkV4Y2VwdGlvblRocm93cwEIAQACAAAAAAAoAQAjU0NfNjAzOWY5ZjJhNzhiNDc4MWI5OWQ0
+ZmM5NTg5NjIxNjQAAAUBAAAAABYBABFDb3B5cmlnaHQgQCAgMjAyNAAATQEAHC5ORVRGcmFtZXdv
+cmssVmVyc2lvbj12NC43LjIBAFQOFEZyYW1ld29ya0Rpc3BsYXlOYW1lFC5ORVQgRnJhbWV3b3Jr
+IDQuNy4yBAEAAAC0AAAAzsrvvgEAAACRAAAAbFN5c3RlbS5SZXNvdXJjZXMuUmVzb3VyY2VSZWFk
+ZXIsIG1zY29ybGliLCBWZXJzaW9uPTQuMC4wLjAsIEN1bHR1cmU9bmV1dHJhbCwgUHVibGljS2V5
+VG9rZW49Yjc3YTVjNTYxOTM0ZTA4OSNTeXN0ZW0uUmVzb3VyY2VzLlJ1bnRpbWVSZXNvdXJjZVNl
+dAIAAAAAAAAAAAAAAFBBRFBBRFC0AAAATDYAAAAAAAAAAAAAZjYAAAAgAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAFg2AAAAAAAAAAAAAAAAX0NvckRsbE1haW4AbXNjb3JlZS5kbGwAAAAAAP8lACAAEAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAEAEAAAABgAAIAAAAAAAAAAAAAAAAAAAAEAAQAAADAAAIAAAAAAAAAAAAAAAAAAAAEAAAAAAEgA
+AABYQAAA7AMAAAAAAAAAAAAA7AM0AAAAVgBTAF8AVgBFAFIAUwBJAE8ATgBfAEkATgBGAE8AAAAA
+AL0E7/4AAAEAAAABAAAAAAAAAAEAAAAAAD8AAAAAAAAABAAAAAIAAAAAAAAAAAAAAAAAAABEAAAA
+AQBWAGEAcgBGAGkAbABlAEkAbgBmAG8AAAAAACQABAAAAFQAcgBhAG4AcwBsAGEAdABpAG8AbgAA
+AAAAAACwBEwDAAABAFMAdAByAGkAbgBnAEYAaQBsAGUASQBuAGYAbwAAACgDAAABADAAMAAwADAA
+MAA0AGIAMAAAABoAAQABAEMAbwBtAG0AZQBuAHQAcwAAAAAAAAAiAAEAAQBDAG8AbQBwAGEAbgB5
+AE4AYQBtAGUAAAAAAAAAAABwACQAAQBGAGkAbABlAEQAZQBzAGMAcgBpAHAAdABpAG8AbgAAAAAA
+UwBDAF8ANgAwADMAOQBmADkAZgAyAGEANwA4AGIANAA3ADgAMQBiADkAOQBkADQAZgBjADkANQA4
+ADkANgAyADEANgA0AAAAMAAIAAEARgBpAGwAZQBWAGUAcgBzAGkAbwBuAAAAAAAxAC4AMAAuADAA
+LgAwAAAAcAAoAAEASQBuAHQAZQByAG4AYQBsAE4AYQBtAGUAAABTAEMAXwA2ADAAMwA5AGYAOQBm
+ADIAYQA3ADgAYgA0ADcAOAAxAGIAOQA5AGQANABmAGMAOQA1ADgAOQA2ADIAMQA2ADQALgBkAGwA
+bAAAAEgAEgABAEwAZQBnAGEAbABDAG8AcAB5AHIAaQBnAGgAdAAAAEMAbwBwAHkAcgBpAGcAaAB0
+ACAAQAAgACAAMgAwADIANAAAACoAAQABAEwAZQBnAGEAbABUAHIAYQBkAGUAbQBhAHIAawBzAAAA
+AAAAAAAAeAAoAAEATwByAGkAZwBpAG4AYQBsAEYAaQBsAGUAbgBhAG0AZQAAAFMAQwBfADYAMAAz
+ADkAZgA5AGYAMgBhADcAOABiADQANwA4ADEAYgA5ADkAZAA0AGYAYwA5ADUAOAA5ADYAMgAxADYA
+NAAuAGQAbABsAAAAaAAkAAEAUAByAG8AZAB1AGMAdABOAGEAbQBlAAAAAABTAEMAXwA2ADAAMwA5
+AGYAOQBmADIAYQA3ADgAYgA0ADcAOAAxAGIAOQA5AGQANABmAGMAOQA1ADgAOQA2ADIAMQA2ADQA
+AAA0AAgAAQBQAHIAbwBkAHUAYwB0AFYAZQByAHMAaQBvAG4AAAAxAC4AMAAuADAALgAwAAAAOAAI
+AAEAQQBzAHMAZQBtAGIAbAB5ACAAVgBlAHIAcwBpAG8AbgAAADEALgAwAC4AMAAuADAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMAAADAAAAHg2AAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==]]></arrayElement>
+                  </arrayElements>
+                </property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the Microsoft Visual Studio Tools for Applications project. Project names must be unique within a package."
+                  name="VSTAProjectName"
+                  typeConverter="NOTBROWSABLE">SC_6039f9f2a78b4781b99d4fc958962164</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the programming language used by the script."
+                  name="ScriptLanguage"
+                  typeConverter="Microsoft.SqlServer.VSTAHosting.ScriptingLanguages">CSharp</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a comma-separated list of read-only variables."
+                  name="ReadOnlyVariables"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ScriptUIVariablePickerDlg"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a comma-separated list of read/write variables."
+                  name="ReadWriteVariables"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ScriptUIWriteableVariablePickerDlg"></property>
+                <property
+                  dataType="System.String"
+                  description="List of breakpoints present on the script."
+                  isArray="true"
+                  name="BreakpointCollection"
+                  typeConverter="NOTBROWSABLE">
+                  <arrayElements
+                    arrayElementCount="0" />
+                </property>
+                <property
+                  dataType="System.String"
+                  description="Checksum to match component metedata against compiled codes."
+                  name="MetadataChecksum140"
+                  typeConverter="NOTBROWSABLE">7C</property>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">Microsoft.ScriptComponentHost</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\Load data to StageCanceled\Script Component.Inputs[Input 0]"
+                  hasSideEffects="true"
+                  name="Input 0">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Load data to StageCanceled\Script Component.Inputs[Input 0].Columns[hotel]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="hotel"
+                      lineageId="Package\Load data to StageCanceled\Resort_Hotel_dataset.Outputs[Excel Source Output].Columns[hotel]" />
+                    <inputColumn
+                      refId="Package\Load data to StageCanceled\Script Component.Inputs[Input 0].Columns[is_canceled]"
+                      cachedDataType="r8"
+                      cachedName="is_canceled"
+                      lineageId="Package\Load data to StageCanceled\Resort_Hotel_dataset.Outputs[Excel Source Output].Columns[is_canceled]" />
+                    <inputColumn
+                      refId="Package\Load data to StageCanceled\Script Component.Inputs[Input 0].Columns[arrival_date_year]"
+                      cachedDataType="r8"
+                      cachedName="arrival_date_year"
+                      lineageId="Package\Load data to StageCanceled\Resort_Hotel_dataset.Outputs[Excel Source Output].Columns[arrival_date_year]" />
+                    <inputColumn
+                      refId="Package\Load data to StageCanceled\Script Component.Inputs[Input 0].Columns[arrival_date_month]"
+                      cachedDataType="r8"
+                      cachedName="arrival_date_month"
+                      lineageId="Package\Load data to StageCanceled\Resort_Hotel_dataset.Outputs[Excel Source Output].Columns[arrival_date_month]" />
+                    <inputColumn
+                      refId="Package\Load data to StageCanceled\Script Component.Inputs[Input 0].Columns[arrival_date_week_number]"
+                      cachedDataType="r8"
+                      cachedName="arrival_date_week_number"
+                      lineageId="Package\Load data to StageCanceled\Resort_Hotel_dataset.Outputs[Excel Source Output].Columns[arrival_date_week_number]" />
+                    <inputColumn
+                      refId="Package\Load data to StageCanceled\Script Component.Inputs[Input 0].Columns[arrival_date_day_of_month]"
+                      cachedDataType="r8"
+                      cachedName="arrival_date_day_of_month"
+                      lineageId="Package\Load data to StageCanceled\Resort_Hotel_dataset.Outputs[Excel Source Output].Columns[arrival_date_day_of_month]" />
+                    <inputColumn
+                      refId="Package\Load data to StageCanceled\Script Component.Inputs[Input 0].Columns[adr]"
+                      cachedDataType="r8"
+                      cachedName="adr"
+                      lineageId="Package\Load data to StageCanceled\Resort_Hotel_dataset.Outputs[Excel Source Output].Columns[adr]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load data to StageCanceled\Script Component.Outputs[Output 0]"
+                  name="Output 0"
+                  synchronousInputId="Package\Load data to StageCanceled\Script Component.Inputs[Input 0]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load data to StageCanceled\Script Component.Outputs[Output 0].Columns[NumberKey]"
+                      dataType="i4"
+                      lineageId="Package\Load data to StageCanceled\Script Component.Outputs[Output 0].Columns[NumberKey]"
+                      name="NumberKey" />
+                    <outputColumn
+                      refId="Package\Load data to StageCanceled\Script Component.Outputs[Output 0].Columns[DateKey]"
+                      dataType="i4"
+                      lineageId="Package\Load data to StageCanceled\Script Component.Outputs[Output 0].Columns[DateKey]"
+                      name="DateKey" />
+                    <outputColumn
+                      refId="Package\Load data to StageCanceled\Script Component.Outputs[Output 0].Columns[HotelKey]"
+                      dataType="i4"
+                      lineageId="Package\Load data to StageCanceled\Script Component.Outputs[Output 0].Columns[HotelKey]"
+                      name="HotelKey" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Load data to StageCanceled\StageCanceled"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="StageCanceled"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[StageCanceled]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Load data to StageCanceled\StageCanceled.Connections[OleDbConnection]"
+                  connectionManagerID="{4AEC852E-A28C-4B75-A9DB-EF006BEEBD48}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[Admin.Resort_Hotel_Stage]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Load data to StageCanceled\StageCanceled.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Load data to StageCanceled\StageCanceled.Inputs[OLE DB Destination Input].Columns[adr]"
+                      cachedDataType="r8"
+                      cachedName="adr"
+                      externalMetadataColumnId="Package\Load data to StageCanceled\StageCanceled.Inputs[OLE DB Destination Input].ExternalColumns[ADR]"
+                      lineageId="Package\Load data to StageCanceled\Resort_Hotel_dataset.Outputs[Excel Source Output].Columns[adr]" />
+                    <inputColumn
+                      refId="Package\Load data to StageCanceled\StageCanceled.Inputs[OLE DB Destination Input].Columns[Datekey]"
+                      cachedDataType="i4"
+                      cachedName="Datekey"
+                      externalMetadataColumnId="Package\Load data to StageCanceled\StageCanceled.Inputs[OLE DB Destination Input].ExternalColumns[DateKey]"
+                      lineageId="Package\Load data to StageCanceled\DateKey.Outputs[Lookup Match Output].Columns[Datekey]" />
+                    <inputColumn
+                      refId="Package\Load data to StageCanceled\StageCanceled.Inputs[OLE DB Destination Input].Columns[CustomerKey]"
+                      cachedDataType="i4"
+                      cachedName="CustomerKey"
+                      externalMetadataColumnId="Package\Load data to StageCanceled\StageCanceled.Inputs[OLE DB Destination Input].ExternalColumns[CustomerKey]"
+                      lineageId="Package\Load data to StageCanceled\Customer.Outputs[Lookup Match Output].Columns[CustomerKey]" />
+                    <inputColumn
+                      refId="Package\Load data to StageCanceled\StageCanceled.Inputs[OLE DB Destination Input].Columns[HotelKey]"
+                      cachedDataType="i4"
+                      cachedName="HotelKey"
+                      externalMetadataColumnId="Package\Load data to StageCanceled\StageCanceled.Inputs[OLE DB Destination Input].ExternalColumns[HotelKey]"
+                      lineageId="Package\Load data to StageCanceled\Hotel.Outputs[Lookup Match Output].Columns[HotelKey]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Load data to StageCanceled\StageCanceled.Inputs[OLE DB Destination Input].ExternalColumns[HotelKey]"
+                      dataType="i4"
+                      name="HotelKey" />
+                    <externalMetadataColumn
+                      refId="Package\Load data to StageCanceled\StageCanceled.Inputs[OLE DB Destination Input].ExternalColumns[DateKey]"
+                      dataType="i4"
+                      name="DateKey" />
+                    <externalMetadataColumn
+                      refId="Package\Load data to StageCanceled\StageCanceled.Inputs[OLE DB Destination Input].ExternalColumns[CustomerKey]"
+                      dataType="i4"
+                      name="CustomerKey" />
+                    <externalMetadataColumn
+                      refId="Package\Load data to StageCanceled\StageCanceled.Inputs[OLE DB Destination Input].ExternalColumns[ADR]"
+                      dataType="r8"
+                      name="ADR" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load data to StageCanceled\StageCanceled.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Load data to StageCanceled\StageCanceled.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load data to StageCanceled\StageCanceled.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load data to StageCanceled\StageCanceled.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load data to StageCanceled\StageCanceled.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load data to StageCanceled\StageCanceled.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Load data to StageCanceled.Paths[Case 1]"
+              endId="Package\Load data to StageCanceled\Hotel.Inputs[Lookup Input]"
+              name="Case 1"
+              startId="Package\Load data to StageCanceled\Conditional Split.Outputs[Case 1]" />
+            <path
+              refId="Package\Load data to StageCanceled.Paths[Excel Source Output]"
+              endId="Package\Load data to StageCanceled\Script Component.Inputs[Input 0]"
+              name="Excel Source Output"
+              startId="Package\Load data to StageCanceled\Resort_Hotel_dataset.Outputs[Excel Source Output]" />
+            <path
+              refId="Package\Load data to StageCanceled.Paths[Lookup Match Output]"
+              endId="Package\Load data to StageCanceled\DateKey.Inputs[Lookup Input]"
+              name="Lookup Match Output"
+              startId="Package\Load data to StageCanceled\Hotel.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\Load data to StageCanceled.Paths[Lookup Match Output1]"
+              endId="Package\Load data to StageCanceled\Customer.Inputs[Lookup Input]"
+              name="Lookup Match Output"
+              startId="Package\Load data to StageCanceled\DateKey.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\Load data to StageCanceled.Paths[Lookup Match Output2]"
+              endId="Package\Load data to StageCanceled\StageCanceled.Inputs[OLE DB Destination Input]"
+              name="Lookup Match Output"
+              startId="Package\Load data to StageCanceled\Customer.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\Load data to StageCanceled.Paths[Output 0]"
+              endId="Package\Load data to StageCanceled\Conditional Split.Inputs[Conditional Split Input]"
+              name="Output 0"
+              startId="Package\Load data to StageCanceled\Script Component.Outputs[Output 0]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Truncate FactCanceled"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{680088E3-F386-44DE-9119-50A129317AA7}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Truncate FactCanceled"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{13080BF0-F8A3-452B-A09E-6E5FB2252906}"
+          SQLTask:SqlStatementSource="DELETE FROM &quot;FactCanceled&quot;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Truncate StageCanceled"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{20F490E3-570A-4493-83F8-1E201E9B74F3}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Truncate StageCanceled"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{4AEC852E-A28C-4B75-A9DB-EF006BEEBD48}"
+          SQLTask:SqlStatementSource="DELETE FROM &quot;StageCanceled&quot;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{94A62C64-91F4-442B-A90D-EDE95CC6D857}"
+      DTS:From="Package\Truncate StageCanceled"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Load data to StageCanceled" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{455B7437-B5FD-4CE6-854A-CBFBA114A513}"
+      DTS:From="Package\Load data to StageCanceled"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\Truncate FactCanceled" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
+      DTS:CreationName=""
+      DTS:DTSID="{0CA11334-55C3-4060-8652-4B865B146BAB}"
+      DTS:From="Package\Truncate FactCanceled"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 2"
+      DTS:To="Package\Load data from StageCanceled to FactCanceled" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="302.666666666667,42.6666666666667"
+          Id="Package\Load data from StageCanceled to FactCanceled"
+          TopLeft="53.124999208376,299.64999464184" />
+        <NodeLayout
+          Size="212,42.6666666666667"
+          Id="Package\Load data to StageCanceled"
+          TopLeft="100.49999858439,115.349998035729" />
+        <NodeLayout
+          Size="186.666666666667,42.6666666666667"
+          Id="Package\Truncate FactCanceled"
+          TopLeft="111.249998342246,207.349996292293" />
+        <NodeLayout
+          Size="193.333333333334,42.6666666666667"
+          Id="Package\Truncate StageCanceled"
+          TopLeft="108.124998388812,21.4499996164441" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="205.645831819934,64.1166662831108">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,51.2333317526183"
+              Start="0,0"
+              End="0,43.7333317526183">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,43.7333317526183" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="205.541665129985,158.016664702396">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,49.3333315898975"
+              Start="0,0"
+              End="0,41.8333315898975">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,41.8333315898975" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 2]"
+          TopLeft="204.520832108644,250.01666295896">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,49.6333316828806"
+              Start="0,0"
+              End="0,42.1333316828806">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,42.1333316828806" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Load data from StageCanceled to FactCanceled">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="177.333333333334,42.6666666666667"
+          Id="Package\Load data from StageCanceled to FactCanceled\StageCanceled_table"
+          TopLeft="310,84" />
+        <NodeLayout
+          Size="170.666666666667,42.6666666666667"
+          Id="Package\Load data from StageCanceled to FactCanceled\FactCanceled_table"
+          TopLeft="313.5,211.5" />
+        <EdgeLayout
+          Id="Package\Load data from StageCanceled to FactCanceled.Paths[OLE DB Source Output]"
+          TopLeft="398.75,126.666666666667">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,84.8333333333333"
+              Start="0,0"
+              End="0,77.3333333333333">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,77.3333333333333" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load data from StageCanceled to FactCanceled\FactCanceled_table">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load data from StageCanceled to FactCanceled\StageCanceled_table">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Load data to StageCanceled">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="124,42.6666666666667"
+          Id="Package\Load data to StageCanceled\Customer"
+          TopLeft="48.1249992828816,161.199997117519" />
+        <NodeLayout
+          Size="104.666666666667,42.6666666666667"
+          Id="Package\Load data to StageCanceled\Hotel"
+          TopLeft="535.499992996455,166.24999819845" />
+        <NodeLayout
+          Size="149.333333333334,42.6666666666667"
+          Id="Package\Load data to StageCanceled\StageCanceled"
+          TopLeft="31.750000949949,252.14999719888" />
+        <NodeLayout
+          Size="118.666666666667,42.6666666666667"
+          Id="Package\Load data to StageCanceled\DateKey"
+          TopLeft="304.374995464459,166.399997024536" />
+        <NodeLayout
+          Size="181.333333333334,42.6666666666667"
+          Id="Package\Load data to StageCanceled\Resort_Hotel_dataset"
+          TopLeft="17.9999998137355,49.6999992096424" />
+        <NodeLayout
+          Size="156,42.6666666666667"
+          Id="Package\Load data to StageCanceled\Conditional Split"
+          TopLeft="505.6249924656,53.9499990352988" />
+        <NodeLayout
+          Size="164,42.6666666666667"
+          Id="Package\Load data to StageCanceled\Script Component"
+          TopLeft="281.249995809048,51.3499990817905" />
+        <EdgeLayout
+          Id="Package\Load data to StageCanceled.Paths[Lookup Match Output1]"
+          TopLeft="304.374995464459,185.133330404361">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-132.249996181577,0"
+              Start="0,0"
+              End="-124.749996181577,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="-124.749996181577,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-110.566384809539,5,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load data to StageCanceled.Paths[Lookup Match Output]"
+          TopLeft="535.499992996455,187.658330944826">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-112.458330865329,0"
+              Start="0,0"
+              End="-104.958330865329,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="-104.958330865329,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-100.670552151415,5,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load data to StageCanceled.Paths[Excel Source Output]"
+          TopLeft="199.333333147069,71.8583324790498">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="81.9166626619797,0"
+              Start="0,0"
+              End="74.4166626619797,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="74.4166626619797,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load data to StageCanceled.Paths[Case 1]"
+          TopLeft="585.729159397694,96.6166657019655">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,69.6333324964841"
+              Start="0,0"
+              End="0,62.1333324964841">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,62.1333324964841" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-15.2180859375,26.2898107794921,30.436171875,9.5537109375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load data to StageCanceled.Paths[Output 0]"
+          TopLeft="445.249995809048,73.983332391878">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="60.374996656552,0"
+              Start="0,0"
+              End="52.874996656552,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="52.874996656552,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load data to StageCanceled.Paths[Lookup Match Output2]"
+          TopLeft="108.270833449749,203.866663784186">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,48.2833334146936"
+              Start="0,0"
+              End="0,40.7833334146936">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,40.7833334146936" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,14.5869792073468,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load data to StageCanceled\Customer">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[StageCustomers]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load data to StageCanceled\Hotel">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[StageHotel]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load data to StageCanceled\StageCanceled">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load data to StageCanceled\DateKey">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[StageDate]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load data to StageCanceled\Resort_Hotel_dataset">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
